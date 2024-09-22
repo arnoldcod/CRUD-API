@@ -7,10 +7,14 @@ RUN ls -la
 
 COPY package*.json ./
 
+COPY prisma ./prisma
+RUN npx prisma generate
+
 # Debug: List contents after copying
 RUN ls -la
 
 RUN npm install
+RUN npm install @prisma/client
 
 COPY . .
 
